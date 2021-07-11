@@ -2,7 +2,15 @@
 
 ## Desciption
 
-> A simple weather dashboard created to help travelers look at multiple cities and receive weather information for each city. Previous searched cities remain on the page so that you can view them again.  
+> A simple Weather-Dashboard application to find weather conditions of a given city both the current and 5-Days forecast at the same time. The server-side API used to get response data object is retrieved from the Open Weather APi. The returned weather data includes the following weather characters and date.
+
+* City, Date, Icon-image
+* Temperature
+* Humidity
+* Wind Speed
+* UV index
+
+Previous searched cities remain on the page so that you can view them again.  
 
 ## User Storey: 
 ```md
