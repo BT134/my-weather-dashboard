@@ -1,4 +1,4 @@
-# Weather Dashboard - Week 6 Service-Side APIs
+# Weather Dashboard - Week 6 Server-Side APIs
 
 ## Desciption
 
