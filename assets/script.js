@@ -25,7 +25,7 @@ function createCityList(citySearchList) {
 
     $("#city-list").append(cityListEntry);
   }
-}
+}; 
 
 function populateCityWeather(city, citySearchList) {
   createCityList(citySearchList);
@@ -50,11 +50,17 @@ function populateCityWeather(city, citySearchList) {
     .then(function(weather) {
       // Log the queryURL
       console.log(queryURL);
-
+     
       // Log the resulting object
       console.log(weather);
 
       var nowMoment = moment();
+
+      if (queryURL.status == 404) {
+        alert("This is not a valid City");
+        return;
+
+      } else {
 
       var displayMoment = $("<h3>");
       $("#city-name").empty();
@@ -90,16 +96,32 @@ function populateCityWeather(city, citySearchList) {
       $.ajax({
         url: queryURL3,
         method: "GET"
-        // Store all of the retrieved data inside of an object called "uvIndex"
-      }).then(function(uvIndex) {
-        console.log(uvIndex);
-
+        // Store all of the retrieved data inside of an object called "uvResponse"
+      }).then(function(uvResponse) {
+        console.log(uvResponse);
+        var uvIndex = uvResponse[0].value;
+        
         var uvIndexDisplay = $("<button>");
-        uvIndexDisplay.addClass("btn btn-danger");
-
+        
+        var bgColor;
+            if (uvIndex <= 3) {
+                bgColor = "green";
+            }
+            else if (uvIndex > 3 && uvIndex <= 6) {
+                bgColor = "yellow";
+            }
+            else if (uvIndex > 6 && uvIndex <= 9) {
+                bgColor = "orange";
+            }
+            else {
+                bgColor = "red";
+            }
+        
+        uvIndexDisplay.addClass("btn btn-custom");
+        uvIndexDisplay.attr("style", ("background-color:" + bgColor));
         $("#current-uv").text("UV Index: ");
-        $("#current-uv").append(uvIndexDisplay.text(uvIndex[0].value));
-        console.log(uvIndex[0].value);
+        $("#current-uv").append(uvIndexDisplay.text(uvIndex));
+        
 
         $.ajax({
           url: queryURL2,
@@ -153,7 +175,7 @@ function populateCityWeather(city, citySearchList) {
           }
         });
       });
-    });
+    }});
 }
 
 $(document).ready(function() {
