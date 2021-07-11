@@ -10,9 +10,9 @@
 * Wind Speed
 * UV index
 
-Previous searched cities remain on the page so that you can view them again.  
+> Previous searched cities remain on the page so that you can view them again.  
 
-## User Storey: 
+## User Storey 
 ```md
 AS A traveler
 I WANT to see the weather outlook for multiple cities
