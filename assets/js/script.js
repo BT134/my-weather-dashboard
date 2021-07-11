@@ -56,7 +56,9 @@ function populateCityWeather(city, citySearchList) {
 
       var nowMoment = moment();
 
-      if (queryURL.status == 404) {
+      console.log(weather.status);
+
+      if (queryURL.status == 200) {
         alert("This is not a valid City");
         return;
 
